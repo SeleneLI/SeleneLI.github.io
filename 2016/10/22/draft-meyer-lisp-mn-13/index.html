@@ -3,23 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hexo</title>
+  <title>Pariselene&#39;s Personal Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Title: draft-meyer-lisp-mn-13Date: 2016-10-14Category: LISPTags: LISP, RFCAuthors: Yue LISummary: LISP Mobile Node draft-meyer-lisp-mn-13
-Abstract????????????mobile node???????LISP?s ITR/ETR????????mo">
+  <meta name="description" content="title: Draftauthor: Yue LI
+Abstract这个文档描述了如何使一个mobile node使用一个轻巧的LISP’s ITR/ETR功能从而达到无缝mobility的功能。文档中描述的LISP Mobile Node的设计使用了标准的LISP功能从而给LISP mobile node提供可扩展的mobility。
+IntroductionLISP Mobile Node">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="Pariselene's Personal Blog">
 <meta property="og:url" content="http://yoursite.com/2016/10/22/draft-meyer-lisp-mn-13/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Title: draft-meyer-lisp-mn-13Date: 2016-10-14Category: LISPTags: LISP, RFCAuthors: Yue LISummary: LISP Mobile Node draft-meyer-lisp-mn-13
-Abstract????????????mobile node???????LISP?s ITR/ETR????????mo">
-<meta property="og:updated_time" content="2016-10-22T21:16:34.000Z">
+<meta property="og:site_name" content="Pariselene's Personal Blog">
+<meta property="og:description" content="title: Draftauthor: Yue LI
+Abstract这个文档描述了如何使一个mobile node使用一个轻巧的LISP’s ITR/ETR功能从而达到无缝mobility的功能。文档中描述的LISP Mobile Node的设计使用了标准的LISP功能从而给LISP mobile node提供可扩展的mobility。
+IntroductionLISP Mobile Node">
+<meta property="og:updated_time" content="2016-10-22T21:22:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="Title: draft-meyer-lisp-mn-13Date: 2016-10-14Category: LISPTags: LISP, RFCAuthors: Yue LISummary: LISP Mobile Node draft-meyer-lisp-mn-13
-Abstract????????????mobile node???????LISP?s ITR/ETR????????mo">
+<meta name="twitter:title" content="Pariselene's Personal Blog">
+<meta name="twitter:description" content="title: Draftauthor: Yue LI
+Abstract这个文档描述了如何使一个mobile node使用一个轻巧的LISP’s ITR/ETR功能从而达到无缝mobility的功能。文档中描述的LISP Mobile Node的设计使用了标准的LISP功能从而给LISP mobile node提供可扩展的mobility。
+IntroductionLISP Mobile Node">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="Pariselene&#39;s Personal Blog" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -40,7 +43,7 @@ Abstract????????????mobile node???????LISP?s ITR/ETR????????mo">
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">Pariselene&#39;s Personal Blog</a>
       </h1>
       
     </div>
@@ -69,7 +72,7 @@ Abstract????????????mobile node???????LISP?s ITR/ETR????????mo">
         <section id="main"><article id="post-draft-meyer-lisp-mn-13" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/10/22/draft-meyer-lisp-mn-13/" class="article-date">
-  <time datetime="2016-10-22T21:13:50.000Z" itemprop="datePublished">2016-10-22</time>
+  <time datetime="2016-10-22T21:22:50.000Z" itemprop="datePublished">2016-10-22</time>
 </a>
     
   </div>
@@ -78,72 +81,86 @@ Abstract????????????mobile node???????LISP?s ITR/ETR????????mo">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Title: draft-meyer-lisp-mn-13<br>Date: 2016-10-14<br>Category: LISP<br>Tags: LISP, RFC<br>Authors: Yue LI<br>Summary: LISP Mobile Node draft-meyer-lisp-mn-13</p>
-<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><pre><code>????????????mobile node???????LISP?s ITR/ETR????????mobility??????????LISP Mobile Node?????????LISP?????LISP mobile node??????mobility?
-</code></pre><p>Introduction<br>     LISP Mobile Node (MN) ????xTR????? a subset of ???8????????????not requiring a home-agent &amp; foreign agent or other data plane network elements. ?????Mobile IP????triangle route??<br>MN????LISP Map-Server?LISP Interworking??roam??????????</p>
-<p>Definition of Terms<br>????????????????????</p>
-<ul>
-<li>EID: MN??????EID???MN?????????address families?EIDs?</li>
-<li>RLOC: MN?roam?LISP domain??NAT??domain??????????EID???????RFC 1918???????? (Address Allocation for Private Internets)???thinks RLOC?</li>
-<li>Roaming Event: A Roaming Event occurs ? LISP MN?RLOC?s set????</li>
-</ul>
-<p>Design Overview<br>MN control plane?Map-Server????anchor point?MN data plane??shortest path routing??????packet delivery latency?</p>
-<p>Design Requirements<br>4.1. User Requirements<br>???????MN????????</p>
-<p>4.2. Network Requirements</p>
-<ul>
-<li>Mapping System Scalability: ?mapping system???????additional state??????????mobility?mapping state??????MN?s Map-Server???MN talking?ITRs?</li>
-<li>Home Agent/Foreign Agent: MN??????Home Agent?Foreign Agent?</li>
-<li>Readdressing: MN?????TCP connection ????????????roam?IP????????TCP???????</li>
-</ul>
-<ol>
-<li>LISP Mobile Node Operation<br>MN????lightweight LISP implementation that runs in an LISP-MN?existing Map-Server ? Interworking infrastructures??built????MN?????xTR???????????LISP site????MN roam???new network??????a new RLOC???MN??????RLOC set?</li>
-</ol>
-<p>5.1. Addressing Architecture<br>     ??MN typically???????EIDs??for all transport connections???EIDs?????????roaming??MN?s EIDs??????MN?s RLOC set??????MN???????Map-Server??????corresponding authentication key???Map-Server?advertise????MN?s EID?aggregated EID-prefix???MN?s mapping????????????mapping system??propagate???MN?????Map-Resolver?????????????MN?s EID????????????Map-Server?????????</p>
-<p>5.2. Control Plane Operation<br>?MN????new RLOC??MN?????Map-Server update??EID-to-RLOC mapping by using Map-Register mechanism?????radio links??traffic??????????MN??Map-Server?????Proxy???Map-Requests. Map-Server?????Map-Reply???non-authoritative?</p>
-<p>5.3. Data Plane Operation<br>Data packets?MN???LISP nodes?????shortest path???lentancy???????????VoIP???????app????MN??????mapping system?????local network???????????????????MN???non-LISP site????packets????PETR?RLOC???</p>
-<ol>
-<li>Updating Remote Caches<br>MN?5??????remote ITRs?PITRs refresh???mapping cache?</li>
-</ol>
-<ul>
-<li>Map Versioning: ETR????????ITR??Map-Version Number?????mapping?????ETR????SMR?SMR??sync mapping?</li>
-<li>Data Driven SMRs: ETR????????packet?ITRs??SMRs?</li>
-<li>Setting Small TTL on Map Replies: ETR??Map-Server???mapping?????small TTL?</li>
-<li>Piggybacking Mapping Data??ITR?ETR??co-located?????xTR???ITR???cache???????site?Map-Request????????????????????remote ITRs?PITRs?????????</li>
-<li>Temporary PITR Caching?ETR?????????????Map-Requests?PITRs?cache????MN?locator-set?????ETR??????PITR?SMR?</li>
-</ul>
-<ol>
-<li>Protocol Operation<br>?5???????mobility??????<br>7.1. LISP Mobile Node to a Stationary Node in a LISP Site<br>  Roaming event?????LISP-MN??????????EID-to-RLOC mapping?????Map-Server????????LISP-sites???Map-Requests??????mapping?????????????mapping???remote ITR?PITR??????<br>7.1.1. Handling Unidirectional Traffic<br>  ??unidirectional traffic?(?ITR?ETR?????)?????Map-Versioning?Data-Driven?????????TTL???????</li>
-</ol>
-<p>7.2. LISP Mobile Node to a Non-LISP Stationary Node<br>????????Interworking infrastructure??????PETR?Map-Server?co-located???????????LISP packets???Map-Server????????????roam?LISP-MN?????????PETR?Map-Server???????stretch(??hops)???</p>
-<p>7.3. LISP Mobile Node to LISP Mobile Node<br>????roaming LISP-MN?stationary LISP-MN??????Roaming LISP-MN?????Map-Server???mapping????????cache management???remote caches???Remote non-roam LISP-MN??????update mapping?????????retrieve new mapping data?</p>
-<p>7.4. Non-LISP Site to a LISP Mobile Node<br>???stationary ITR?non-LISP site????ITR???natively?packets??non-LISP site????LISP-MN?non-LISP site??????????????PETR???????PITR???traffic?unidirectional????? LISP-MN????cache management????PITR??mapping?</p>
-<p>7.5. LISP Site to LISP Mobile Node<br>? LISP-MN roams????????????????????ITR??mapping info???????ITR?ETR?????????????</p>
-<ol>
-<li><p>Multicase and Mobility<br>????</p>
-</li>
-<li><p>RLOC Considerations<br>  ? LISP-MN roams???LISP site????????RLOC????????RLOC?EID-prefixes????????????host???? LISP-MN?????????double encapsulation??packet?3 headers?????????</p>
-</li>
-</ol>
-<ul>
-<li>inner header: source???host???EID: E?; ?destination???MN?EID: E?</li>
-<li>middle header: source???host?ITR?RLOC: R?; ?destination???DHCP?MN???RLOC: D??D????MN??????EID-prefixes?????</li>
-<li><p>outer header: source????ITR???RLOC: R?; ?destination???MN???xTR?RLOC: R?</p>
-<p>   ??????RFC?????</p>
-</li>
-</ul>
-<ol>
-<li><p>LISP Mobile Nodes behind NAT Devices<br>?LISP-MN???NAT device????????????private RLOC address?MN????private RLOC address?????????source address????????????NAT???????????LISP-MN?????????LISP-MN?private address?</p>
-</li>
-<li><p>Mobility Example<br>????????RFC?</p>
-</li>
-<li><p>LISP Implementation in a Mobile Node<br>???????LISP-MN????????LISP-MN implements a LISP sub-layer inside of the IP layer of??????sub-layer??IP-layer?link-layer?????????</p>
-</li>
-</ol>
+        <p>title: Draft<br>author: Yue LI</p>
+<h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>这个文档描述了如何使一个mobile node使用一个轻巧的LISP’s ITR/ETR功能从而达到无缝mobility的功能。文档中描述的LISP Mobile Node的设计使用了标准的LISP功能从而给LISP mobile node提供可扩展的mobility。</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>LISP Mobile Node (MN) 只安装了xTR的一部分即 a subset of 功能。8条设计目标（其中一条写到not requiring a home-agent &amp; foreign agent or other data plane network elements. 所以不会像Mobile IP那样会有triangle route）。<br> MN需要借助LISP Map-Server和LISP Interworking达到roam及被及时发现的目的。</p>
+<pre><code>Definition of Terms
+仅列出几条相对重要的，其余参见纸质文档。
 
+- EID: MN从不更换它的EID。一个MN可以有多个来自不同address families的EIDs。
+- RLOC: MN在roam到LISP domain或是NAT后面domain的时候有可能会把一个EID或是私有地址（RFC 1918私有网络地址分配 (Address Allocation for Private Internets)）当作thinks RLOC。
+- Roaming Event: A Roaming Event occurs 当 LISP MN的RLOC’s set有变化。
+
+Design Overview
+MN control plane把Map-Server当作一个anchor point，MN data plane利用shortest path routing因此不会增加packet delivery latency。
+
+Design Requirements
+4.1. User Requirements
+从用户角度阐述MN需要满足什么条件
+
+4.2. Network Requirements
+
+- Mapping System Scalability: 在mapping system中不应引入任何additional state。尤其是任何用以维护mobility的mapping state都必须局限在MN’s Map-Server以及和MN talking的ITRs。
+- Home Agent/Foreign Agent: MN中必须不能用Home Agent和Foreign Agent。
+- Readdressing: MN必须不能让TCP connection 重置。因为传统方式下一旦roam则IP地址会改变，那么TCP连接必需重连。
+
+5. LISP Mobile Node Operation
+MN是由一个lightweight LISP implementation that runs in an LISP-MN，existing Map-Server 和 Interworking infrastructures一起built的。一个MN因为加入了xTR的功能而可以看作是一个LISP site。当一个MN roam进一个new network时，它会收到a new RLOC，并且MN必须负责更新RLOC set。
+
+5.1. Addressing Architecture
+     一个MN typically配备一个或多个EIDs用来for all transport connections。这些EIDs不常改变，尤其是在roaming期间MN’s EIDs固定的时候，MN’s RLOC set会改变。一个MN也可以配备一个Map-Server的地址和一个corresponding authentication key。鉴于Map-Server会advertise一个含有MN’s EID的aggregated EID-prefix，那么MN’s mapping的变化就不会更进一步地往mapping system里面propagate。一个MN还会有一个Map-Resolver的地址。若由于特殊原因使得MN’s EID被重新分配了，那么相应的Map-Server地址也会重新分配。
+
+     5.2. Control Plane Operation
+     当MN收到一个new RLOC时，MN必须在它的Map-Server update它的EID-to-RLOC mapping by using Map-Register mechanism。处于减少radio links上的traffic以及节约电池用量等，MN会让Map-Server当作自己的Proxy来回复Map-Requests. Map-Server回复是需在Map-Reply里表明non-authoritative。
+
+     5.3. Data Plane Operation
+     Data packets在MN和其他LISP nodes之间会选择shortest path，这样lentancy会很低，尤其对于游戏及VoIP那种延时敏感的app很有利。MN产生的除了去mapping system或是直接在local network发送的包，都是已经封装好了的包。若这个MN是发向non-LISP site的，那么packets要直接按PETR的RLOC封装。
+
+     6. Updating Remote Caches
+     MN有5种方式可以使remote ITRs或PITRs refresh自己的mapping cache。
+
+     - Map Versioning: ETR解封装时如果发现ITR用的Map-Version Number低于当前的mapping版本，那么ETR发起一个SMR，SMR用来sync mapping。
+     - Data Driven SMRs: ETR可向正在接收自己packet的ITRs发出SMRs。
+     - Setting Small TTL on Map Replies: ETR或是Map-Server可以在mapping里设置一个small TTL。
+     - Piggybacking Mapping Data：当ITR和ETR不是co-located时，即没有xTR，那么ITR在向它cache中所存储的远程site发Map-Request时顺带把自己的更新也发过去，这样可以通知remote ITRs和PITRs。（不是完全理解）
+     - Temporary PITR Caching：ETR维护一个刚刚有向它自己发过Map-Requests的PITRs的cache。当之后MN的locator-set有变化时，ETR可以向所有的PITR发SMR。
+
+     7. Protocol Operation
+     分5种情况仔细讨论mobility之后的流程。
+     7.1. LISP Mobile Node to a Stationary Node in a LISP Site
+          Roaming event发生之后，LISP-MN必须立马把它自己新的EID-to-RLOC mapping信息记录到Map-Server上。这样使得别的LISP-sites可以发Map-Requests来获取当前的mapping信息。当前在使用不再有效的mapping信息的remote ITR或PITR应当被通知。
+          7.1.1. Handling Unidirectional Traffic
+               当有unidirectional traffic时(即ITR和ETR不在一起时)，不能使用Map-Versioning和Data-Driven等技术，而主要靠把TTL设置小来解决。
+
+               7.2. LISP Mobile Node to a Non-LISP Stationary Node
+               这种情况下，需用Interworking infrastructure。一般来说，PETR和Map-Server是co-loca。（不是完全理解）
+               - Temporary PITR Cachingï¨Map-Server注册过的源发出来的。发生roam的LPITRs的cache。当之后MN的locator-set有变化时ｆR可以向所有的PITR发SMR。
+
+               7. Protocol Operation
+               ob5种情况仔细讨论mobility之后的流程。
+               7.1. LIS»stationary LISP-MN发包的情况。Roaming LISP-MN需要立马给Map-Server注册新mapping，然后使用自己的cache management机制让remote caches更新。Remote non-roam «的LISP-sites可以发Map-Requests来获取当前的mappi¹æ¡息。当前在使用不再有效的mapping信息的remoLIte ITR或PITR应当被通知。
+               7.1.1. Handling Unidirectèl Traffic
+                    当有unidirectional traffic时(即ITR和E㸍在一起时)，不能使用Map-Versioning和Data-Driven缌技术，而主要靠把TTL设置小来解决。
+
+                    7.2. LI¯unidirectional的话，那么 LISP-MN就要使用cache manag需用Interworking infrastructure。一般来说，PETRåSP Mobile Node
+                    当 LISP-MN roams到一个新的网络时，åR Cachingï¨Map-Server注册过的源发出来的。发佟roam的LPITRs的cache。当之后MN的locator-set有变化¶ｆR可以向所有的PITR发SMR。
+
+                    7. Protocol Operatira
+                    ob5种情况仔细讨论mobility之后的流程。
+                    7.1. L到一个”RLOC”，但实际上这个RLOC是EID-prefixes的ä¬给Map-Server注册新mapping，然后使用自己的cacåmanagement机制让remote caches更新。Remote non-roam heLISP-sites可以发Map-Requests来获取当前的mappi¹æ息。当前在使用不再有效的mapping信息的remoLIt: ITR或PITR应当被通知。
+                    7.1.1. Handling Unidirectèl ; 而destination地址为DHCP给MN分配的RLOC: D。但D实陸起时)，不能使用Map-Versioning和Data-Driven缌技te¯，而主要靠把TTL设置小来解决。
+
+                    7.2. LI¯unitination地址为MN所在的xTR的RLOC: R。
+
+                         具体流ç¨Interworking infrastructure。一般来说，PETRåSP AT Devices
+                         当LISP-MN移动进NAT device的后面，那它会èchingï¨Map-Server注册过的源发出来的。发佟 RLOC address作为封装包的外层的source address。之后操作和平时普通使用NAT的流程一样。但外部
+                         ob5种情况仔细讨论mobility之后的流程。
+                         7.1.  a°一个”RLOC”，但实际上这个RLOC是EID-prefixeFCä¬给Map-Server注册新mapping，然后使用自己的çåmanagement机制让remote caches更新。Remote non-ro Lam heLISP-sites可以发Map-Requests来获取当前皪sappi¹æ息。当前在使用不再有效的mapping信æ。
+</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2016/10/22/draft-meyer-lisp-mn-13/" data-id="ciulph3lw0000ddpdmd2f6m5r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2016/10/22/draft-meyer-lisp-mn-13/" data-id="ciulpp2vy0003gbpdv7f4u9rq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -153,7 +170,7 @@ Abstract????????????mobile node???????LISP?s ITR/ETR????????mo">
 <nav id="article-nav">
   
   
-    <a href="/2016/10/22/about_myself/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/10/22/RFC_6834/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title"></div>
     </a>
@@ -196,11 +213,11 @@ Abstract????????????mobile node???????LISP?s ITR/ETR????????mo">
           </li>
         
           <li>
-            <a href="/2016/10/22/about_myself/">(no title)</a>
+            <a href="/2016/10/22/RFC_6834/">(no title)</a>
           </li>
         
           <li>
-            <a href="/2016/10/22/RFC_6834/">(no title)</a>
+            <a href="/2016/10/22/about_myself/">(no title)</a>
           </li>
         
           <li>
