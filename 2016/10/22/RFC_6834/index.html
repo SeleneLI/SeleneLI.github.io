@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Title: RFC 6834Date: 2016-10-14Category: LISPTags: LISP, RFCAuthors: Yue LISummary: RFC 6834 LISP Map-Versioning
+?????set of Locators????????update mechanism???? data-plane ? LISP header?? V bit ??? 1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2016/10/22/RFC_6834/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Title: RFC 6834Date: 2016-10-14Category: LISPTags: LISP, RFCAuthors: Yue LISummary: RFC 6834 LISP Map-Versioning
+?????set of Locators????????update mechanism???? data-plane ? LISP header?? V bit ??? 1">
+<meta property="og:updated_time" content="2016-10-22T21:13:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="Title: RFC 6834Date: 2016-10-14Category: LISPTags: LISP, RFCAuthors: Yue LISummary: RFC 6834 LISP Map-Versioning
+?????set of Locators????????update mechanism???? data-plane ? LISP header?? V bit ??? 1">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-RFC_6834" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/10/22/RFC_6834/" class="article-date">
+  <time datetime="2016-10-22T21:13:50.000Z" itemprop="datePublished">2016-10-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Title: RFC 6834<br>Date: 2016-10-14<br>Category: LISP<br>Tags: LISP, RFC<br>Authors: Yue LI<br>Summary: RFC 6834 LISP Map-Versioning</p>
+<p>?????set of Locators????????update mechanism???? data-plane ? LISP header?? V bit ??? 1???? Map version?????Locator????</p>
+<p>##1. Introduction<br>     EID-to-RLOC mapping ??????? adding or removing one or more RLOCs????? priority or weight ????<br>     ? LISP outer header ??2? version ??source mapping version &amp; destination mapping version?<br>     ?? Map versioning ? SMR ??????? xTR ?????</p>
+<p>##2. Definitions of Terms<br>Map-Version number:  ??? EID-to-RLOC mapping ??????????? 12-bit ?????? the value 0 (0x000).<br>Null Map-Version:  The 12-bit null value of 0 (0x000) is not used as a Map-Version number.  It is used to signal that no Map-Version number is assigned to the EID-to-RLOC mapping.</p>
+<p>##4. EID-to-RLOC Map-Version Number<br>     ??? mapping ??? configure ????? version number?ETR ?? generate &amp; assign version number??? version number ?????2 version numbers ????????????<br>[x+2049, 4096] U (0, x) &lt; X &lt; [x+1, x+2048]<br>     ? ITR ? ETR ?????? source version number = NULL?? ETR ??? Cache ?? version number ?????<br>?? destination version number = NULL?? ETR ??? Database ?? version number ?????<br>     ?? set of Locators ???????? RLOC ??????LISP-site ?? assign a new Map-Version number?</p>
+<p>###5.1. Handling Destination Map-Version Numbers ?????ETR????RLOC???<br>     ? ITR ? ETR ?????? packets ?? Destination Map-Version number ? Database ?????????????????<br>     ? ITR ? ETR ?????? packets ?? Destination Map-Version number ? Database ??????no valid ????? drop packets?<br>     ? ITR ? ETR ?????? packets ?? Destination Map-Version number ? Database ????????? update?ETR ?? ITR ?? SMR / ??newer mapping ? Map-Request???? rate-limited??????? ITR ???? version number??? reduce ? SMR ?????????? security ??????1. ITR is refusing to use the new mapping;  2. it might be some form of attack; 3. Map-Requests cannot reach that ITR?<br>     ??? TTL ???ITR ???? old version number ? ETR ?????ETR ?? silently drop the packets ????????? ITR 1. either someone has not respected the TTL?2. it is a form of spoof/attack?</p>
+<p>###5.2. Handling Source Map-Version Number ?????ITR????RLOC???<br>     ? ITR ? ETR ?????? packets ?? Source Map-Version number ? Cache ?????????????????<br>     ? ITR ? ETR ?????? packets ?? Source Map-Version number ? Cache ??????no valid ????? drop packets?<br>     ? ITR ? ETR ?????? packets ?? Source Map-Version number ? Cache ????????? update?ETR ??? ITR ??????? Map-Request ??????? rate-limited?</p>
+<p>####8.2.1. Map-Versioning and Proxy-ITRs<br>     Proxy-ITR ?? non-LISP site ? packets ?? LISP ????? ETR?? Proxy-ITR ???? Map Versioning????? V bit =1?? source version = NULL?ETR ??????? ignore ?? version ???</p>
+<p>####8.2.3. Map-Versioning and Proxy-ETRs<br>     Proxy-ETR ?? LISP site ? packets ???????? non-LISP site?? Proxy-ETR ???? Map Versioning????? V bit =1?? destination version = NULL?Proxy-ETR ??????? ignore ?? version ???</p>
+<p>###8.3. RLOC Shutdown/Withdraw<br>     ??? RLOC shut down ?? unreachable ?? withdraw ??Map-Versioning ????????? version number ? packets ????????? frequent up/down changes ???????????? excessive load on the mapping system?</p>
+<p>##9. Incremental Deployment and Implementation Status<br>Map-Versioning is currently implemented in OpenLISP.<br>No need of any specific mechanism to discover an xTR ???? Map-Versioning?</p>
+<p>##10. Security Considerations<br>Map-Versioning ? robustness ?????? Mapping Distributed System ????<br>? attacker ????????????????? Version number????? packets ??? dropped?<br>???? LSB ???????? xTR ?? Map-Request??? version number ??????????1????? Map-Request?</p>
+<p>##11. Lack of Synchronization among ETRs<br>LISP does not provide any specific synchronisation mechanism but assumes that synchronization is provided by configuring the different xTRs consistently.<br>? xTR ?????? version number ??Map-Request ??????</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/10/22/RFC_6834/" data-id="ciulpec7v0001cipdfloc9ky0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/10/22/draft-meyer-lisp-mn-13/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/10/22/RFC_6834/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/22/draft-meyer-lisp-mn-13/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/22/about_myself/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/10/22/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
